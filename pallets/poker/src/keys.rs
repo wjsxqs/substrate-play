@@ -3,11 +3,11 @@ use crate::stage::*;
 use codec::{Encode, Decode};
 // use core::result;
 use sp_std::prelude::*;
-use frame_support::dispatch::DispatchResult;
+use frame_support::dispatch::{DispatchResult, DispatchError};
 
-type ResultBytes = DispatchResult<Vec<u8>, &'static str>;
-type ResultOptionBytes = DispatchResult<Option<Vec<u8>>, &'static str>;
-type ResultUnit = DispatchResult<(), &'static str>;
+type ResultBytes = Result<Vec<u8>, &'static str>;
+type ResultOptionBytes = Result<Option<Vec<u8>>, &'static str>;
+type ResultUnit = Result<(), &'static str>;
 
 pub const KEY_SIZE: usize = 32;
 

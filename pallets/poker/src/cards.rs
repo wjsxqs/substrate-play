@@ -26,8 +26,8 @@ pub struct Card {
 
 impl Card {
     pub fn is_valid(&self) -> bool {
-        ensure!(self.nominal >= 1 && self.nominal <= 13);
-        ensure!(self.suit >= 1 && self.suit <= 4);
+        debug_assert!(self.nominal >= 1 && self.nominal <= 13);
+        debug_assert!(self.suit >= 1 && self.suit <= 4);
 
         self.nominal >= 1 && self.nominal <= 13
             && self.suit >= 1 && self.suit <= 4
@@ -73,7 +73,7 @@ pub fn decode(bytes: &[u8]) -> Vec<Card> {
 pub fn from_random(byte: u8) -> Card {
     let high = byte >> 4;
     let low  = byte & 15;
-    ensure!(byte == low + high * 16);
+    debug_assert!(byte == low + high * 16);
 
     let card = Card {
         nominal: high % 13 + 1,
